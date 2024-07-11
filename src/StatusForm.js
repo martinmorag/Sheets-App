@@ -13,7 +13,7 @@ const StatusForm = () => {
     console.log('Submitting with email:', trimmedEmail, 'and status:', trimmedStatus); // Log submitted data
 
     try {
-      const response = await axios.post('http://localhost:5000/update-status', { email: trimmedEmail, status: trimmedStatus });
+      const response = await axios.post('https://sheets-server.onrender.com/update-status', { email: trimmedEmail, status: trimmedStatus });
       console.log('Response:', response.data);
       alert('Estado actualizado correctamente');
     } catch (error) {

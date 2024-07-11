@@ -9,7 +9,7 @@ const LatestChanges = () => {
   useEffect(() => {
     const fetchLatestChanges = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/latest-changes?limit=${limit}`);
+        const response = await axios.get(`https://sheets-server.onrender.com/latest-changes?limit=${limit}`);
         setLatestChanges(response.data);
       } catch (error) {
         console.error('Error fetching latest changes:', error);
