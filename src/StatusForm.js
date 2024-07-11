@@ -8,9 +8,12 @@ const StatusForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Submitting with email:', email, 'and status:', status); // Log submitted data
+    const trimmedEmail = email.trim();
+    const trimmedStatus = status.trim();
+    console.log('Submitting with email:', trimmedEmail, 'and status:', trimmedStatus); // Log submitted data
+
     try {
-      const response = await axios.post('http://localhost:5000/update-status', { email, status });
+      const response = await axios.post('http://localhost:5000/update-status', { email: trimmedEmail, status: trimmedStatus });
       console.log('Response:', response.data);
       alert('Estado actualizado correctamente');
     } catch (error) {
@@ -24,14 +27,15 @@ const StatusForm = () => {
     <div className='status'>
       <h1>Actualizar Estado</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className='label'>
           Email:
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" className='input' value={email} onChange={(e) => setEmail(e.target.value)} required/>
         </label>
         <br />
-        <label>
+        <label className='label'>
           Estado:
-          <select value={status} onChange={(e) => setStatus(e.target.value)}>
+          <select value={status} className='input' onChange={(e) => setStatus(e.target.value)}>
+            <option value="" disabled>Seleccione un estado</option>
             <option value="Contactado">Contactado</option>
             <option value="Esperando respuesta">Esperando respuesta</option>
             <option value="En llamada">En llamada</option>
@@ -40,7 +44,7 @@ const StatusForm = () => {
           </select>
         </label>
         <br />
-        <button type="submit">Actualizar</button>
+        <button type="submit" className='SubmitBtn'>Actualizar</button>
       </form>
     </div>
   );

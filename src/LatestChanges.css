@@ -1,0 +1,21 @@
+.changes {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: 100vh;
+    justify-content: center;
+}
+
+.changes h2 {
+    margin: 2rem 0;
+    text-align: center;
+}
+.table {
+    text-align: center;
+    margin: 0 2rem;
+    border-collapse: collapse;
+}
+.table td, .table th {
+    border: 2px solid #CBE896;
+}
+
